@@ -21,6 +21,7 @@ jobs:
       with:
         project_id: ${{ secrets.GCP_PROJECT }}
         workload_identity_provider: ${{ secrets.GCP_WIP }}
+        access_token_scopes: https://www.googleapis.com/auth/spreadsheets
         
     - name: Run render script
       run: |
