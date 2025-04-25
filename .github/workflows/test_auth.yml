@@ -1,0 +1,21 @@
+
+name: Test Google Auth  
+on: workflow_dispatch
+
+jobs:
+  job_id:
+    # Any runner supporting Node 20 or newer
+    runs-on: ubuntu-latest
+
+    # Add "id-token" with the intended permissions.
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+    - uses: 'actions/checkout@v4'
+
+    - uses: 'google-github-actions/auth@v2'
+      with:
+        project_id: ${{ secrets.GCP_PROJECT }}
+        workload_identity_provider: ${{ secrets.GCP_WIP }}
