@@ -1,5 +1,5 @@
 
-install.packages("googlesheets4", repos = "https://cloud.r-project.org")
+install.packages(c("googlesheets4", "optparse"), repos = "https://cloud.r-project.org")
 library(googlesheets4)
 library(optparse)
 
