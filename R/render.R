@@ -7,11 +7,20 @@ library(googlesheets4)
 # option_list <- list(optparse::make_option(c("--sa"), type = "character", default = NULL))
 # service_account <- parse_args(OptionParser(option_list = option_list))$sa
 
-# Authenticate
 gs4_deauth()
-grep(".json$", list.files(), value = TRUE)
-t <- gargle::credentials_service_account(path = grep(".json$", list.files(), value = TRUE),
-                                         scopes = "https://www.googleapis.com/auth/spreadsheets")
+
+# Get the JSON file name
+json_file <- grep(".json$", list.files(), value = TRUE)
+
+# Verify we found exactly one file
+if (length(json_file) != 1) {
+  stop("Expected exactly one JSON file, found: ", length(json_file))
+}
+
+options(gargle_verbosity = "debug")
+
+t <- gargle::credentials_service_account(path = json_file[1], scopes = "https://www.googleapis.com/auth/spreadsheets")
+
 is.null(t)
 
 # gs4_auth(
