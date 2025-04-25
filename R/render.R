@@ -9,6 +9,7 @@ library(googlesheets4)
 
 # Authenticate
 gs4_deauth()
+grep(".json$", list.files(), value = TRUE)
 t <- gargle::credentials_service_account(path = grep(".json$", list.files(), value = TRUE),
                                          scopes = "https://www.googleapis.com/auth/spreadsheets")
 is.null(t)
