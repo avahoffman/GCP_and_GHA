@@ -9,7 +9,7 @@ service_account <- parse_args(OptionParser(option_list = option_list))$sa
 
 # Authenticate
 options(gargle.gce.use_ip = TRUE)
-t <- gargle::credentials_gce(service_account)
+t <- gargle::credentials_external_account()
 print("is it null?")
 is.null(t)
 
