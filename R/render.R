@@ -8,10 +8,10 @@ option_list <- list(optparse::make_option(c("--sa"), type = "character", default
 service_account <- parse_args(OptionParser(option_list = option_list))$sa
 
 # Authenticate
-options(gargle.gce.use_ip = TRUE)
-t <- gargle::credentials_external_account()
-print("is it null?")
-is.null(t)
-
-
-gs4_auth()
+grep(".json$", list.files(), value = TRUE)
+# gs4_deauth()
+# gs4_auth(
+#   token = gargle::credentials_service_account(
+#     path = NULL,
+#   scopes = "https://www.googleapis.com/auth/spreadsheets")
+# )
