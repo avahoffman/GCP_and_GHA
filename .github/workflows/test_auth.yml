@@ -19,3 +19,8 @@ jobs:
       with:
         project_id: ${{ secrets.GCP_PROJECT }}
         workload_identity_provider: ${{ secrets.GCP_WIP }}
+        
+    - name: Run render script
+      run: |
+        Rscript --vanilla "R/render.R"
+          
