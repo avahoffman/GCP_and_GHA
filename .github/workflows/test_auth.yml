@@ -6,6 +6,8 @@ jobs:
   job_id:
     # Any runner supporting Node 20 or newer
     runs-on: ubuntu-latest
+    container:
+      image: rocker/tidyverse:latest
 
     # Add "id-token" with the intended permissions.
     permissions:
