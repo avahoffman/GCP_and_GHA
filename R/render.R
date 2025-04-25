@@ -19,7 +19,7 @@ if (length(json_file) != 1) {
 
 options(gargle_verbosity = "debug")
 
-t <- gargle::credentials_external_account(path = json_file[1], scopes = "https://www.googleapis.com/auth/spreadsheets")
+t <- gargle::credentials_app_default(scopes = "https://www.googleapis.com/auth/spreadsheets")
 
 is.null(t)
 
