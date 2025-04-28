@@ -23,7 +23,7 @@ endpoint <- httr::oauth_endpoints("google")
 secrets <- jsonlite::fromJSON(json_file)
 scope <- "https://www.googleapis.com/auth/spreadsheets"
 
-my_token <- oauth_service_token(endpoint, secrets, scope)
+my_token <- httr::oauth_service_token(endpoint, secrets, scope)
 
 t <- gargle::credentials_byo_oauth2(token = my_token)
 
