@@ -1,5 +1,5 @@
 
-install.packages("googlesheets4", repos = "https://cloud.r-project.org")
+install.packages(c("googlesheets4", "jsonlite"), repos = "https://cloud.r-project.org")
 library(googlesheets4)
 #library(optparse)
 
@@ -19,7 +19,15 @@ if (length(json_file) != 1) {
 
 options(gargle_verbosity = "debug")
 
-t <- gargle::credentials_gce(scopes = "https://www.googleapis.com/auth/spreadsheets")
+endpoint <- oauth_endpoints("google")
+secrets <- jsonlite::fromJSON(json_file)
+scope <- "https://www.googleapis.com/auth/spreadsheets"
+
+my_token <- oauth_service_token(endpoint, secrets, scope)
+
+t <- credentials_byo_oauth2(token = my_token)
+
+#t <- gargle::credentials_gce(scopes = "https://www.googleapis.com/auth/spreadsheets")
 
 is.null(t)
 
