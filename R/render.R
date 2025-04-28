@@ -19,13 +19,13 @@ if (length(json_file) != 1) {
 
 options(gargle_verbosity = "debug")
 
-endpoint <- oauth_endpoints("google")
+endpoint <- httr::oauth_endpoints("google")
 secrets <- jsonlite::fromJSON(json_file)
 scope <- "https://www.googleapis.com/auth/spreadsheets"
 
 my_token <- oauth_service_token(endpoint, secrets, scope)
 
-t <- credentials_byo_oauth2(token = my_token)
+t <- gargle::credentials_byo_oauth2(token = my_token)
 
 #t <- gargle::credentials_gce(scopes = "https://www.googleapis.com/auth/spreadsheets")
 
